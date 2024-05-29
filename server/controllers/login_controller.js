@@ -15,7 +15,7 @@ const LoginController = async (req, res) => {
                     if (response) {
                         const token = jwt.sign({ email: user.email, role: user.role, id: user._id }, screte_KEY, ({ expiresIn: "1h" }));
                         res.cookie('token', token, { httpOnly: true }); //, maxAge: 7200000
-                        return res.json({ status: true, role: user.role });
+                        res.json({ status: true, role: user.role });
                     }
                     else {
                         res.json("Incorrect Password!");

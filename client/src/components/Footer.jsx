@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { FaFacebookSquare, FaTwitterSquare, FaInstagramSquare, FaYoutubeSquare } from "react-icons/fa";
 import { AiFillLinkedin } from "react-icons/ai";
-import logo from "../assets/logo.jpeg";
+import logo from "../assets/logoImg1.png";
 
 const Footer = () => {
     return (

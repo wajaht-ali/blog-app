@@ -36,13 +36,13 @@ export const AppContext = createContext();
 const API_KEY = import.meta.env.VITE_REACT_APP_API;
 
 function App() {
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState([]);
 
   useEffect(() => {
     axios.defaults.withCredentials = true;
-    axios.get(`${API_KEY}/auth`)
+    axios.get(`/auth`)
       .then((res) => {
-        // console.log(res);
+        console.log(res);
         setUser(res.data);
       })
       .catch((error) => {

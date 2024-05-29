@@ -17,7 +17,7 @@ const router = express.Router();
 router.post("/registerUser", RegisterController);
 
 router.get("/", verifyUser, (req, res) => {
-  return res.json({ emial: req.email, role: req.role });
+  res.status(201).send({ emial: req.email, role: req.role });
 });
 
 router.post("/loginUser", LoginController);
@@ -31,7 +31,7 @@ router.get("/verify", verifyUser, (req, res) => {
   return res.json({ role: req.role, status: true, message: "Success" });
 });
 
-router.post('/newsletter', newsLetterController);
+router.post("/newsletter", newsLetterController);
 
 router.get("/verifyAdmin", verifyAdmin, (req, res) => {
   res.json({ message: "Success", id: req._id });

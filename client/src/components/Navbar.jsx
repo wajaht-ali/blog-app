@@ -5,7 +5,7 @@ import { MdLogout } from "react-icons/md";
 import { Link } from 'react-router-dom';
 import { AppContext } from '../App';
 import axios from 'axios';
-import logo from '../assets/THE_NEWS-removebg.png';
+import logo from "../assets/logoImg1.png";
 
 const Navbar = () => {
   const user = useContext(AppContext);
