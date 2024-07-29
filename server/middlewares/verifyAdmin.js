@@ -12,8 +12,6 @@ export const verifyAdmin = (req, res, next) => {
                 return res.json("Error with token");
             }
             else {
-                console.log(decode);
-                console.log(req);
                 if(decode.role === 'admin') {
                     // req.role = decode.role;
                     req._id = decode.id;

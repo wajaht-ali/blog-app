@@ -12,15 +12,15 @@ const API_KEY = import.meta.env.VITE_REACT_APP_API;
 const Post = () => {
     const authorId = useContext(AuthorContext);
     const adminId = useContext(AdminContext);
-    const [post, setPost] = useState({});
+    const [post, setPost] = useState([]);
+    const [author, setAuthor] = useState([]);
+
     const { id } = useParams();
-    // console.log("AdminId: ", adminId);
-    // console.log("AuthorId: ", authorId);
+
     useEffect(() => {
         axios.defaults.withCredentials = true;
         axios.get(`${API_KEY}/posts/latest/` + id)
             .then((result) => {
-                console.log(result);
                 setPost(result.data.post);
             })
             .catch((error) => {
@@ -28,55 +28,48 @@ const Post = () => {
             })
     }, [])
 
+    const fetchCreator = async (userId) => {
+        try {
+            const res = await axios.get(`${API_KEY}/auth/get-single-user/${userId}`);
+            if(res.data.success) {
+                setAuthor(res.data.user);
+            }
+            else {
+                alert(res.data.message);
+            }
+        } catch (error) {
+            console.log(`Error with fetching user ${error}`);
+        }
+    }
+
+    useEffect(() => {
+        fetchCreator(post.createdBy);
+    }, [])
+    
+    const formatDate = (dateString) => {
+        const date = new Date(dateString);
+        const day = String(date.getUTCDate()).padStart(2, '0');
+        const month = String(date.getUTCMonth() + 1).padStart(2, '0'); // Months are zero-indexed
+        const year = date.getUTCFullYear();
+        return `${day}-${month}-${year}`;
+      };
+    const formattedDate = formatDate(post.createdAt);
+
     return (
-        <div className='h-auto w-full flex flex-col items-center mx-auto border-black border-2 p-4'>
-            <div className='mt-8 w-full h-full bg-gray-300 box-content'>
-                <h1 className='text-xl md:text-4xl mt-3 font-bold'>{post.title}</h1>
-                <img className='my-4 w-full md:w-[500px] md:h-[400px]' src={`http://localhost:8000/Images/${post.file}`} alt="myImage" />
-                <p className='uppercase font-semibold'>{post.category}</p>
-                <p className='flex flex-row items-center '><FaRegClock size={15} className='mx-2' />{post.createdAt}</p>
-                <p className='mt-4 text-lg'>{post.desc}</p>
+        <article className="max-w-2xl px-6 py-24 mx-auto space-y-16 my-3">
+            <div className="w-full mx-auto space-y-4">
+                <h1 className="text-5xl font-bold leading-none">{post.title}</h1>
+
+                <p className="text-sm text-black">by 
+                <span className="text-blue-600"> {author.name}</span> on 
+                    <time dateTime="2021-02-12 15:34:18-0200"> {formattedDate}</time>
+                </p>
+                <img className='my-4 w-full' src={`http://localhost:8000/Images/${post.file}`} alt="myImage" />
             </div>
-            {/* <div className="overflow-hidden transition-shadow duration-300 bg-white rounded shadow-sm">
-                <img
-                    src="https://images.pexels.com/photos/2408666/pexels-photo-2408666.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;w=500"
-                    className="object-cover w-full h-64"
-                    alt=""
-                />
-                <div className="p-5 border border-t-0">
-                    <p className="mb-3 text-xs font-semibold tracking-wide uppercase">
-                        <Link
-                            to="/"
-                            className="transition-colors duration-200 text-blue-gray-900 hover:text-deep-purple-accent-700"
-                            aria-label="Category"
-                            title="traveling"
-                        >
-                            traveling
-                        </Link>
-                        <span className="text-gray-600">— 28 Dec 2020</span>
-                    </p>
-                    <Link
-                        to="/"
-                        aria-label="Category"
-                        title="Visit the East"
-                        className="inline-block mb-3 text-2xl font-bold leading-5 transition-colors duration-200 hover:text-deep-purple-accent-700"
-                    >
-                        Visit the East
-                    </Link>
-                    <p className="mb-2 text-gray-700">
-                        Sed ut perspiciatis unde omnis iste natus error sit sed quia
-                        consequuntur magni voluptatem doloremque.
-                    </p>
-                    <Link
-                        to="/"
-                        aria-label=""
-                        className="inline-flex items-center font-semibold transition-colors duration-200 text-deep-purple-accent-400 hover:text-deep-purple-800"
-                    >
-                        Learn more
-                    </Link>
-                </div>
-            </div> */}
-        </div>
+            <div className="">
+                <p>{post.desc}</p>
+            </div>
+        </article>
     )
 }
 

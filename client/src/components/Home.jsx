@@ -33,7 +33,7 @@ const Home = () => {
   }
 
   const filterNews = (posts) => {
-    return posts.category === "news"
+    return posts.category === "News"
   }
 
   const filterSports = (posts) => {

@@ -4,7 +4,7 @@ import { verifyUser } from "../middlewares/verifyUser.js";
 import { verifyAdmin } from "../middlewares/verifyAdmin.js";
 import LoginController from "../controllers/login_controller.js";
 import RegisterController from "../controllers/register_controller.js";
-import { GetAllUsers } from "../controllers/getAllUsers.js";
+import { GetAllUsers, GetSingleUser } from "../controllers/getAllUsers.js";
 import { verifyAuthor } from "../middlewares/verifyAuthor.js";
 import { newsLetterController } from "../controllers/newsletterController.js";
 
@@ -17,7 +17,7 @@ const router = express.Router();
 router.post("/registerUser", RegisterController);
 
 router.get("/", verifyUser, (req, res) => {
-  res.status(201).send({ emial: req.email, role: req.role });
+  res.status(201).send({ email: req.email, role: req.role });
 });
 
 router.post("/loginUser", LoginController);
@@ -43,4 +43,5 @@ router.get("/verifyAuthor", verifyAuthor, (req, res) => {
 
 router.get("/users", GetAllUsers);
 
+router.get("/get-single-user/:id", GetSingleUser);
 export { router as UserRouter };
