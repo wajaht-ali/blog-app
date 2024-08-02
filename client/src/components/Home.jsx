@@ -26,7 +26,7 @@ const Home = () => {
       .catch((error) => {
         console.log(error);
       })
-  }, []) 
+  }, [])
 
   const latestNews = (posts) => {
     return posts.category === "latest"
@@ -59,7 +59,7 @@ const Home = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 place-items-center md:place-items-stretch gap-4 text-white">
         <div className='w-full col-span-1 h-full'>
 
-          <Carousel showArrows={true} stopOnHover={true} infiniteLoop={true} interval={4000} autoPlay={true} showThumbs={false}>
+          <Carousel showArrows={true} stopOnHover={true} infiniteLoop={true} interval={2000} autoPlay={true} showThumbs={false}>
             {
               posts.filter(latestNews).map((item) => {
                 return (
@@ -106,15 +106,9 @@ const Home = () => {
         {
           posts.filter(filterNews).slice(0, 3).map((item) => {
             return <Link key={item._id} to={`posts/${item.category}/${item._id}`}>
-              {/* <div style={{ backgroundImage: `url(http://localhost:8000/Images/${item.file})` }} className='relative h-[180px] w-[300px] p-2 bg-center bg-no-repeat bg-cover flex flex-col justify-end' key={posts.id}>
-                <div className="absolute inset-0" style={{ zIndex: '1' }}>
-                  <div className='absolute inset-0 bg-black opacity-30'></div>
-                </div>
-                <p className='text-white z-10 font-bold text-xl md:text-2xl'>{item.title}</p>
-                <p className='text-white z-10 md: text-lg font-semibold'>{item.category}</p>
-              </div> */}
-              <div className="overflow-hidden transition-shadow duration-300 bg-white rounded shadow-gray-200 shadow-lg">
+              <div className="w-[350px] overflow-hidden transition-shadow duration-300 bg-white rounded shadow-gray-200 shadow-lg">
                 <img
+                  className='h-[250px] w-full object-contain'
                   src={`http://localhost:8000/Images/${item.file}`}
                   alt="myImage"
                 />
@@ -133,8 +127,7 @@ const Home = () => {
                   <p
                     aria-label="Category"
                     title="Visit the East"
-                    className="inline-block mb-3 text-2xl font-bold leading-5 transition-colors duration-200 hover:text-deep-purple-accent-700"
-                  >
+                    className="inline-block mb-3 text-2xl font-bold leading-5 transition-colors duration-200 hover:text-deep-purple-accent-700 w-full">
                     {item.title}
                   </p>
                   <p className="mb-2 text-gray-700">
@@ -161,16 +154,9 @@ const Home = () => {
         {
           posts.filter(filterBusiness).slice(0, 3).map((item) => {
             return <Link key={item._id} to={`posts/${item.category}/${item._id}`}>
-              {/* <div style={{ backgroundImage: `url(http://localhost:8000/Images/${item.file})` }} className='relative h-[180px] w-[300px] p-2 bg-center bg-no-repeat bg-cover flex flex-col justify-end' key={posts.id}>
-                <div className="absolute inset-0" style={{ zIndex: '1' }}>
-                  <div className='absolute inset-0 bg-black opacity-30'></div>
-                </div>
-                <p className='text-white z-10 font-bold text-xl md:text-2xl'>{item.title}</p>
-                <p className='text-white z-10 md: text-lg font-semibold'>{item.category}</p>
-              </div> */}
-              <div className="overflow-hidden transition-shadow duration-300 bg-white rounded shadow-gray-600 shadow-md">
+              <div className="w-[350px] overflow-hidden transition-shadow duration-300 bg-white rounded shadow-gray-200 shadow-lg">
                 <img
-                  className='w-full'
+                  className='h-[250px] w-full object-cover'
                   src={`http://localhost:8000/Images/${item.file}`}
                   alt="myImage"
                 />
@@ -189,8 +175,7 @@ const Home = () => {
                   <p
                     aria-label="Category"
                     title="Visit the East"
-                    className="inline-block mb-3 text-2xl font-bold leading-5 transition-colors duration-200 hover:text-deep-purple-accent-700"
-                  >
+                    className="inline-block mb-3 text-2xl font-bold leading-5 transition-colors duration-200 hover:text-deep-purple-accent-700 w-full">
                     {item.title}
                   </p>
                   <p className="mb-2 text-gray-700">
@@ -217,15 +202,9 @@ const Home = () => {
         {
           posts.filter(filterSports).slice(0, 3).map((item) => {
             return <Link key={item._id} to={`posts/${item.category}/${item._id}`}>
-              {/* <div style={{ backgroundImage: `url(http://localhost:8000/Images/${item.file})` }} className='relative h-[180px] w-[300px] p-2 bg-center bg-no-repeat bg-cover flex flex-col justify-end' key={posts.id}>
-                <div className="absolute inset-0" style={{ zIndex: '1' }}>
-                  <div className='absolute inset-0 bg-black opacity-30'></div>
-                </div>
-                <p className='text-white z-10 font-bold text-xl md:text-2xl'>{item.title}</p>
-                <p className='text-white z-10 md: text-lg font-semibold'>{item.category}</p>
-              </div> */}
-              <div className="overflow-hidden transition-shadow duration-300 bg-white rounded shadow-gray-200 shadow-lg">
+              <div className="w-[350px] overflow-hidden transition-shadow duration-300 bg-white rounded shadow-gray-200 shadow-lg">
                 <img
+                  className='h-[250px] w-full'
                   src={`http://localhost:8000/Images/${item.file}`}
                   alt="myImage"
                 />
@@ -244,8 +223,7 @@ const Home = () => {
                   <p
                     aria-label="Category"
                     title="Visit the East"
-                    className="inline-block mb-3 text-2xl font-bold leading-5 transition-colors duration-200 hover:text-deep-purple-accent-700"
-                  >
+                    className="inline-block mb-3 text-2xl font-bold leading-5 transition-colors duration-200 hover:text-deep-purple-accent-700 w-full">
                     {item.title}
                   </p>
                   <p className="mb-2 text-gray-700">
@@ -272,16 +250,9 @@ const Home = () => {
         {
           posts.filter(filterWorld).slice(0, 3).map((item) => {
             return <Link key={item._id} to={`posts/${item.category}/${item._id}`}>
-              {/* <div style={{ backgroundImage: `url(http://localhost:8000/Images/${item.file})` }} className='relative h-[180px] w-[300px] p-2 bg-center bg-no-repeat bg-cover flex flex-col justify-end' key={posts.id}>
-                <div className="absolute inset-0" style={{ zIndex: '1' }}>
-                  <div className='absolute inset-0 bg-black opacity-30'></div>
-                </div>
-                <p className='text-white z-10 font-bold text-xl md:text-2xl'>{item.title}</p>
-                <p className='text-white z-10 md: text-lg font-semibold'>{item.category}</p>
-              </div> */}
-              <div className="overflow-hidden transition-shadow duration-300 bg-white rounded shadow-gray-200 shadow-sm ">
+              <div className="w-[350px] overflow-hidden transition-shadow duration-300 bg-white rounded shadow-gray-200 shadow-lg">
                 <img
-                  className='w-full'
+                  className='h-[250px] w-full'
                   src={`http://localhost:8000/Images/${item.file}`}
                   alt="myImage"
                 />
@@ -300,8 +271,7 @@ const Home = () => {
                   <p
                     aria-label="Category"
                     title="Visit the East"
-                    className="inline-block mb-3 text-2xl font-bold leading-5 transition-colors duration-200 hover:text-deep-purple-accent-700"
-                  >
+                    className="inline-block mb-3 text-2xl font-bold leading-5 transition-colors duration-200 hover:text-deep-purple-accent-700 w-full">
                     {item.title}
                   </p>
                   <p className="mb-2 text-gray-700">

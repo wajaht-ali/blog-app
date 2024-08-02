@@ -7,7 +7,8 @@ import {
   GetPostById,
   UpdatePostController,
 } from "../controllers/getPostById.js";
-import { deletePostById } from "../controllers/deletePost.js";
+import { deletePostById, handleLikeController, handleUnLikeController } from "../controllers/deletePost.js";
+import { requireSignIn } from "../middlewares/requireSignIn.js";
 // import { isSignedIn } from "../middlewares/requireSignIn.js";
 
 const router = express.Router();
@@ -33,5 +34,6 @@ router.put("/update-post/:id", upload.single("file"), UpdatePostController);
 router.get("/getAllNews", AllPosts);
 router.post("/createPost", upload.single("file"), CreatePostController);
 router.delete("/deletePostById/:id", deletePostById);
-
+router.put("/like-post/:id", requireSignIn, handleLikeController);
+router.put("/unlike-post/:id", requireSignIn, handleUnLikeController);
 export { router as PostRouter };

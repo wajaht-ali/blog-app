@@ -14,6 +14,10 @@ const PostSchema = new mongoose.Schema({
         type: String,
         require: true
     },
+    like: [{
+        type: mongoose.Schema.ObjectId,
+        ref: "users"
+    }],
     file: {
         type: String,
         require: true

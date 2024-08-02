@@ -21,15 +21,15 @@ const News = () => {
   }, [])
 
   const filterNews = (posts) => {
-    return posts.category === "news"
+    return posts.category === "News"
   }
 
   return (
-    <div className='h-auto md:h-screen w-full flex flex-col mx-auto px-4 my-3'>
+    <div className='h-auto w-full flex flex-col mx-auto px-4 my-3'>
       <div className="py-3">
         <h2 className='border-l-4 rounded-sm border-[#FFD230] text-lg md:text-xl font-bold px-2'>News</h2>
       </div>
-      <div className="flex flex-wrap items-center gap-y-4 justify-center md:justify-evenly gap-2 overflow-y-scroll">
+      <div className="flex flex-wrap items-center gap-y-4 justify-center md:justify-evenly gap-2 overflow-y-auto">
         {
           posts.filter(filterNews).map((item) => {
             return <Link key={item._id} to={`/${item.category}/${item._id}`}>
@@ -54,8 +54,7 @@ const News = () => {
                   <p
                     aria-label="Category"
                     title="Visit the East"
-                    className="inline-block mb-3 text-2xl font-bold leading-5 transition-colors duration-200 hover:text-deep-purple-accent-700"
-                  >
+                    className="inline-block mb-3 text-2xl font-bold leading-5 transition-colors duration-200 hover:text-deep-purple-accent-700 w-full">
                     {item.title}
                   </p>
                   <p className="mb-2 text-gray-700">

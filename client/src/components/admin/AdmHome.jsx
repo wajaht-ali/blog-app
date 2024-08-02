@@ -11,7 +11,6 @@ const AdmHome = () => {
   useEffect(() => {
     axios.get(`${API_KEY}/posts/getAllNews`)
       .then((res) => {
-        console.log(res);
         setPosts(res.data);
 
       })

@@ -21,7 +21,7 @@ export const requireSignIn = (req, res, next) => {
                 req.email = decode.email;
                 req.role = decode.role;
                 // req.name = decode.name;
-                // req._id = decode._id;
+                req._id = decode._id;
                 next();
             }
         })
