@@ -15,7 +15,7 @@ const Post = () => {
     const adminId = useContext(AdminContext);
     const [post, setPost] = useState({});
     const [author, setAuthor] = useState([]);
-
+    const [click, setClick] = useState(false);
     const { id } = useParams();
 
     const fetchCreator = async (userId) => {
@@ -42,6 +42,9 @@ const Post = () => {
             })
     }, [])
     
+    const handleClick = () => {
+        setClick(!click);
+    }
 
     const formatDate = (dateString) => {
         const date = new Date(dateString);
@@ -94,7 +97,7 @@ const Post = () => {
                     <span className="text-blue-600"> {author.name}</span> on
                     <time dateTime="2021-02-12 15:34:18-0200"> {formattedDate}</time>
                 </p>
-                <span>{<HiOutlineThumbUp onClick={() => handleLike(post._id)} size={20} />}</span>
+                <span className="cursor-pointer transition-all delay-100" onClick={handleClick}>{click ? <HiThumbUp size={20} /> :<HiOutlineThumbUp  size={20} />}</span>
                 </div>
                 <img className='my-4 w-full mt-4' src={`http://localhost:8000/Images/${post.file}`} alt="myImage" />
             </div>

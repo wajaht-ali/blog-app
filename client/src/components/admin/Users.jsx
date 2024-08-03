@@ -53,9 +53,9 @@ const Users = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            {users.map((item) => (
+                            {users.map((item, index) => (
                                 <tr key={item._id} className='bg-blue-100 text-center border-b-2 border-white'>
-                                    <td className="py-2 md:px-4">1</td>
+                                    <td className="py-2 md:px-4">{index + 1}</td>
                                     <td className="py-2 md:px-4">{item.name}</td>
                                     <td className="py-2 md:px-4">{item.email}</td>
                                     <td className="py-2 md:px-4">{item.role}</td>

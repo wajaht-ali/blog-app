@@ -51,7 +51,7 @@ const Home = () => {
 
       {/* Welcome page section  */}
       <div className="flex items-center justify-between py-3 mt-2">
-        <h2 className='border-l-4 rounded-sm border-blue-400 text-lg md:text-xl font-bold px-2'>Welcome to the <span className='uppercase font-bold'>news</span></h2>
+        <h2 className='border-l-4 rounded-sm border-blue-400 text-lg md:text-xl font-bold px-2'>Welcome to Blog <span className='uppercase font-bold'>Byte</span></h2>
 
         <p className='hidden md:block text-lg text-gray-500 font-semibold'><Date /></p>
       </div>

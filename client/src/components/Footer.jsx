@@ -16,12 +16,12 @@ const Footer = () => {
                     >
                         <img width={"80px"} height={"100px"} src={logo} alt="imgLogo" />
                         <span className="ml-2 text-xl font-bold tracking-wide text-gray-800 uppercase">
-                            The News
+                            Blog Byte
                         </span>
                     </Link>
                     <div className="mt-6 lg:max-w-sm">
                         <p className="text-sm text-gray-800">
-                            The NEWS is the most athuntic platform for the daily updates on lifestyle, events, and current affairs all around the world.
+                            Blog Byte is an athuntic platform for the daily updates on lifestyle, events, and current affairs all around the world.
                         </p>
                         <p className="mt-4 text-sm text-gray-800">
                             And we earned this trust by delivering content with proofs in a most responsible way ever.
@@ -51,7 +51,7 @@ const Footer = () => {
                             title="Our email"
                             className="transition-colors duration-300 text-deep-purple-accent-400 hover:text-deep-purple-800"
                         >
-                            info@thenews.com
+                            info@blogbyte.com
                         </Link>
                     </div>
                     <div className="flex">
@@ -64,7 +64,7 @@ const Footer = () => {
                             title="Our address"
                             className="transition-colors duration-300 text-deep-purple-accent-400 hover:text-deep-purple-800"
                         >
-                            312 Lovely Street, NY
+                            312 York Street, NY
                         </Link>
                     </div>
                 </div>
