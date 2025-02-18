@@ -36,6 +36,10 @@ app.use("/apply", requireSignIn, ApplyRouter);
 app.use("/admin", AdminRouter);
 app.use("/chat", chatRouter);
 
+app.get("/", (req, res) => {
+  res.send({message: "Server is running ✅!"});
+});
+
 app.listen(PORT, (req, res) => {
   console.log(`Server is running on ${PORT}`);
 });
