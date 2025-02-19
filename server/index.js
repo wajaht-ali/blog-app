@@ -19,7 +19,7 @@ const db_URI = process.env.db_URI;
 
 app.use(
   cors({
-    origin: ["http://localhost:5173"],
+    origin: ["https://blog-app-three-lake-31.vercel.app"],
     methods: ["POST", "GET", "PUT", "DELETE"],
     credentials: true,
   })
