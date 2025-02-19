@@ -37,7 +37,7 @@ app.use("/admin", AdminRouter);
 app.use("/chat", chatRouter);
 
 app.get("/", (req, res) => {
-  res.send({message: "Server is running ✅!"});
+  res.send({message: "Server is running ✅, Home route is clear 👍"});
 });
 
 app.listen(PORT, (req, res) => {
