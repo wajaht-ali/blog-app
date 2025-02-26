@@ -13,7 +13,7 @@ const News = () => {
     axios.get(`${API_KEY}/posts/getAllNews`)
       .then((result) => {
         // console.log(result);
-        setPosts(result.data);
+        setPosts(result.data.data);
       })
       .catch((error) => {
         console.log(error);
@@ -21,7 +21,7 @@ const News = () => {
   }, [])
 
   const filterNews = (posts) => {
-    return posts.category === "News"
+    return posts.category === "news"
   }
 
   return (

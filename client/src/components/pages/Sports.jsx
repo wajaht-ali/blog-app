@@ -12,8 +12,8 @@ const Sports = () => {
     axios.defaults.withCredentials = true;
     axios.get(`${API_KEY}/posts/getAllNews`)
       .then((result) => {
-        console.log(result);
-        setPosts(result.data);
+        // console.log(result);
+        setPosts(result.data.data);
       })
       .catch((error) => {
         console.log(error);

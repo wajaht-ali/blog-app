@@ -16,7 +16,7 @@ const Login = () => {
         axios.defaults.withCredentials = true;
         axios.post(`${API_KEY}/auth/loginUser`, { email, password })
             .then((res) => {
-                // console.log(res);
+                console.log(res);
                 if (res.data.status === true) {
                     if (res.data.role === 'admin') {
                         window.location.href = "/admin";

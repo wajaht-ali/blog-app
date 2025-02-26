@@ -13,7 +13,7 @@ const World = () => {
     axios.get(`${API_KEY}/posts/getAllNews`)
       .then((result) => {
         console.log(result);
-        setPosts(result.data);
+        setPosts(result.data.data);
       })
       .catch((error) => {
         console.log(error);

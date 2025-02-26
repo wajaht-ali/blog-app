@@ -16,24 +16,31 @@ const Home = () => {
   const [posts, setPosts] = useState([]);
   const navigate = useNavigate();
 
+  const fetchPosts = async () => {
+    try {
+      const res = await axios.get(`${API_KEY}/posts/getAllNews`);
+      // console.log(res)
+      if (res.data.success) {
+        setPosts(res.data.data);
+      } else {
+        setPosts([]);
+      }
+    } catch (error) {
+      console.log(`Error with posts fetching ${error}`);
+      setPosts([]);
+    }
+  }
   useEffect(() => {
-    axios.defaults.withCredentials = true;
-    axios.get(`${API_KEY}/posts/getAllNews`)
-      .then((result) => {
-        // console.log(result);
-        setPosts(result.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      })
-  }, [])
+    fetchPosts();
+  }, []);
+
 
   const latestNews = (posts) => {
     return posts.category === "latest"
   }
 
   const filterNews = (posts) => {
-    return posts.category === "News"
+    return posts.category === "news"
   }
 
   const filterSports = (posts) => {
@@ -61,7 +68,7 @@ const Home = () => {
 
           <Carousel showArrows={true} stopOnHover={true} infiniteLoop={true} interval={2000} autoPlay={true} showThumbs={false}>
             {
-              posts.filter(latestNews).map((item) => {
+              posts.filter((item) => item.category === "latest").map((item) => {
                 return (
                   <Link key={item._id} to={`posts/${item.category}/${item._id}`}>
                     <div style={{ backgroundImage: `url(http://localhost:8000/Images/${item.file})` }} className='relative w-full h-[410px] p-2 bg-center bg-no-repeat bg-cover flex flex-col justify-end'>

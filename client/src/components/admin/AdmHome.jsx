@@ -11,7 +11,8 @@ const AdmHome = () => {
   useEffect(() => {
     axios.get(`${API_KEY}/posts/getAllNews`)
       .then((res) => {
-        setPosts(res.data);
+        console.log("adm posts: ", res);
+        setPosts(res.data.data);
 
       })
       .catch((error) => {
@@ -19,6 +20,7 @@ const AdmHome = () => {
       })
   }, [])
 
+  
   const handleDeletePost = (id) => {
     axios.defaults.withCredentials = true;
     axios.delete(`${API_KEY}/posts/deletePostById/` + id)
