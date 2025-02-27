@@ -9,6 +9,7 @@ import { AdminRouter } from "./routes/admin.js";
 import { ApplyRouter } from "./routes/apply.js";
 import { requireSignIn } from "./middlewares/requireSignIn.js";
 import { chatRouter } from "./routes/chat.js";
+import path from "path";
 
 dotenv.config();
 
@@ -25,7 +26,8 @@ app.use(
 );
 app.use(express.json());
 app.use(cookieParser());
-app.use(express.static("assets"));
+const __dirname = path.resolve();
+app.use("/assets", express.static(path.join(__dirname, "server/assets")));
 
 mongoose.connect(db_URI);
 
