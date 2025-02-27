@@ -10,7 +10,6 @@ import { ApplyRouter } from "./routes/apply.js";
 import { requireSignIn } from "./middlewares/requireSignIn.js";
 import { chatRouter } from "./routes/chat.js";
 
-
 dotenv.config();
 
 const app = express();
@@ -19,7 +18,7 @@ const db_URI = process.env.db_URI;
 
 app.use(
   cors({
-    origin: ["https://blog-app-three-lake-31.vercel.app"],
+    origin: ["https://blog-app-ui-lime.vercel.app"],
     methods: ["POST", "GET", "PUT", "DELETE"],
     credentials: true,
   })
@@ -37,7 +36,7 @@ app.use("/admin", AdminRouter);
 app.use("/chat", chatRouter);
 
 app.get("/", (req, res) => {
-  res.send({message: "Server is running ✅, Home route is clear 👍"});
+  res.send({ message: "Server is running ✅, Home route is clear 👍" });
 });
 
 app.listen(PORT, (req, res) => {
